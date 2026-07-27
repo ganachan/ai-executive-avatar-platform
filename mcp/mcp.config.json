@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "ai-avatar-platform": {
+    "ai-executive-avatar-platform": {
       "command": "${workspaceFolder}/mcp/.venv/Scripts/python.exe",
       "args": ["${workspaceFolder}/mcp/server.py"],
       "env": {

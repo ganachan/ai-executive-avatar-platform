@@ -52,7 +52,7 @@ Add to `claude_desktop_config.json` (`~/Library/Application Support/Claude/` on 
 ```json
 {
   "mcpServers": {
-    "ai-avatar-platform": {
+    "ai-executive-avatar-platform": {
       "command": "python",
       "args": ["/absolute/path/to/project/mcp/server.py"],
       "env": {
@@ -72,7 +72,7 @@ Add to your workspace `.vscode/mcp.json` or use the provided `mcp/mcp.config.jso
 ```json
 {
   "servers": {
-    "ai-avatar-platform": {
+    "ai-executive-avatar-platform": {
       "type": "stdio",
       "command": "python",
       "args": ["mcp/server.py"],

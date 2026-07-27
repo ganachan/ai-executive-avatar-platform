@@ -57,8 +57,8 @@ An **MCP server** (`mcp/`) wraps the platform API so any MCP-compatible agent (C
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/ganachan/ai-avatar-platform.git
-cd ai-avatar-platform
+git clone https://github.com/ganachan/ai-executive-avatar-platform.git
+cd ai-executive-avatar-platform
 ```
 
 ### 2. Configure environment variables
