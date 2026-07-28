@@ -40,6 +40,14 @@ class Settings(BaseSettings):
     # Must be a direct HTTPS URL to the image file (PNG/JPG, max 1920x1080).
     # When blank, a solid white background colour is used instead.
     CUSTOM_AVATAR_BACKGROUND_IMAGE: str = ""
+    # ── Open-source / Fireworks models via Azure AI Foundry ───────────────────
+    # Chat model provider: "azure" (GPT-4o) | "minimax" (default — FW-MiniMax-M2.5, lower cost)
+    CHAT_MODEL_PROVIDER: str = "minimax"
+    # MiniMax endpoint — AI Foundry openai-compatible endpoint (openai/v1 suffix)
+    # Format: https://{resource}.services.ai.azure.com/openai/v1
+    MINIMAX_ENDPOINT: str = "https://aiavatarmodelsrg.services.ai.azure.com/openai/v1"
+    # Deployed model name as shown in Azure AI Foundry
+    MINIMAX_DEPLOYMENT: str = "FW-MiniMax-M2.5"
 
     class Config:
         env_file = ".env"

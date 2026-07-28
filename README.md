@@ -81,10 +81,13 @@ cp frontend/.env.example frontend/.env
 | `AZURE_SPEECH_RESOURCE_ID` | ✅ | Full ARM resource ID of the Speech account |
 | `AZURE_SPEECH_ENDPOINT` | ✅ | `https://{resource}.cognitiveservices.azure.com` |
 | `AZURE_OPENAI_ENDPOINT` | ✅ | Azure OpenAI or Foundry endpoint |
-| `AZURE_OPENAI_DEPLOYMENT` | ✅ | Deployed model name, e.g. `gpt-4o` |
+| `AZURE_OPENAI_DEPLOYMENT` | ✅ | Deployed model name, e.g. `gpt-4o` (used when `CHAT_MODEL_PROVIDER=azure`) |
 | `CHAT_ENDPOINT` | ✅ | Explicit chat completions endpoint |
 | `VOICE_LIVE_ENDPOINT` | ✅ | AI Foundry endpoint for Voice Live API |
 | `VOICE_LIVE_MODEL` | ✅ | Model for voice live, e.g. `gpt-4o` |
+| `CHAT_MODEL_PROVIDER` | ⬜ | `minimax` (default, cost-efficient FW-MiniMax-M2.5) or `azure` (GPT-4o) |
+| `MINIMAX_ENDPOINT` | ⬜ | AI Foundry OpenAI-compatible endpoint for MiniMax |
+| `MINIMAX_DEPLOYMENT` | ⬜ | Deployed MiniMax model name, e.g. `FW-MiniMax-M2.5` |
 | `AZURE_SPEECH_KEY` | ⬜ | Leave blank to use Entra ID (`az login`) |
 | `AZURE_OPENAI_KEY` | ⬜ | Leave blank to use Entra ID (`az login`) |
 | `CUSTOM_AVATAR_ENDPOINT` | ⬜ | WebSocket endpoint for trained custom avatars |

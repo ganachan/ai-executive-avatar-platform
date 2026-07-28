@@ -12,11 +12,13 @@ interface Props {
   voiceName: string;
   avatarCharacter: string;
   avatarStyle: string;
-  avatarType?: "stock" | "photo";
+  avatarType?: "stock" | "photo" | "custom";
   photoUrl?: string | null;
+  customized?: boolean;
+  useBuiltInVoice?: boolean;
 }
 
-export default function LiveAvatarSession({ avatarId, avatarName, voiceName, avatarCharacter, avatarStyle, avatarType = "stock", photoUrl }: Props) {
+export default function LiveAvatarSession({ avatarId, avatarName, voiceName, avatarCharacter, avatarStyle, avatarType = "stock", photoUrl, customized = false, useBuiltInVoice = false }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const synthesizerRef = useRef<unknown>(null);
@@ -62,6 +64,13 @@ export default function LiveAvatarSession({ avatarId, avatarName, voiceName, ava
       speechConfig.speechSynthesisVoiceName = voiceName;
 
       const avatarConfig = new SpeechSDK.AvatarConfig(avatarCharacter, avatarStyle);
+      // Custom trained avatars (e.g. Binaka) must set `customized: true` or the
+      // Azure avatar service won't recognize the character and no video frames
+      // will be rendered (WebRTC session connects but stays blank/black).
+      avatarConfig.customized = customized;
+      if (useBuiltInVoice) {
+        avatarConfig.useBuiltInVoice = true;
+      }
 
       const pc = new RTCPeerConnection({
         iceServers: [{ urls: iceToken.Urls, username: iceToken.Username, credential: iceToken.Password }],
@@ -112,6 +121,7 @@ export default function LiveAvatarSession({ avatarId, avatarName, voiceName, ava
   const handleSend = async (message: string) => {
     if (!message.trim() || !synthesizerRef.current) return;
     setTextInput("");
+    setError(null);
     // Optimistically add user message immediately so it appears in the transcript
     setConversation((prev) => [...prev, { role: "user", content: message }]);
     try {

@@ -74,6 +74,8 @@ export default function InteractTabs({ avatar }: Props) {
           avatarStyle={avatar.avatar_style}
           avatarType={avatar.avatar_type}
           photoUrl={avatar.photo_url}
+          customized={avatar.customized}
+          useBuiltInVoice={avatar.use_built_in_voice}
         />
       )}
     </div>
